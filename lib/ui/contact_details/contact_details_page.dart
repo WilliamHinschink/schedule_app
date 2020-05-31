@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scheduleapp/ui/contact_details/body/contact_detail_body.dart';
+import 'package:scheduleapp/ui/contact_details/footer/contact_activities.dart';
 import 'package:scheduleapp/ui/contact_details/header/contact_detail_header.dart';
 import 'package:scheduleapp/ui/contacts/contact.dart';
 import 'package:meta/meta.dart';
@@ -45,7 +46,7 @@ class _ContactDetailsPageState extends State<ContactDetailsPage> {
                 padding: EdgeInsets.all(24.0),
                 child: ContactDetailBody(contact: widget.contact),
               ),
-              //ContactActivities()
+              ContactActivities(contact: widget.contact)
             ],
           ),
         ),

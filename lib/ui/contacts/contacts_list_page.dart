@@ -34,18 +34,6 @@ class _ContactsListPageState extends State<ContactsListPage> {
 
   @override
   Widget build(BuildContext context) {
-    Widget content;
-
-    if (_contacts.isEmpty) {
-      content = Center(
-        child: CircularProgressIndicator(),
-      );
-    } else {
-      content = ListView.builder(
-          controller: _scrollController,
-          itemCount: _contacts.length,
-          itemBuilder: _buildContactListTile);
-    }
 
     return Scaffold(
       appBar: AppBar(title: Text('Contacts')),
@@ -54,7 +42,14 @@ class _ContactsListPageState extends State<ContactsListPage> {
         child: Icon(Icons.person_add),
         backgroundColor: Colors.red,
       ),
-      body: content,
+      body: _contacts.isEmpty
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : ListView.builder(
+              controller: _scrollController,
+              itemCount: _contacts.length,
+              itemBuilder: _buildContactListTile),
     );
   }
 

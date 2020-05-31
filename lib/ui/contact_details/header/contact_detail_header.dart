@@ -45,12 +45,6 @@ class ContactDetailHeader extends StatelessWidget {
     var screenWidth = MediaQuery.of(context).size.width;
 
     return DiagonallyCutColoredImage(
-      image: Image.asset(
-        'name',
-        width: screenWidth,
-        height: 280.0,
-        fit: BoxFit.cover,
-      ),
       color: Color(0xBB8338f4),
     );
   }

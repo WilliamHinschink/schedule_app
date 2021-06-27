@@ -9,6 +9,7 @@ class BudgetScheduleApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         accentColor: Color(0xFFF850DD)
       ),
+      title: 'BudgetDash',
       home: ContactsListPage(),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:scheduleapp/ui/contact_details/contact_details_page.dart';
 import 'package:scheduleapp/ui/contacts/contact.dart';
 
@@ -13,11 +14,13 @@ class ContactsListPage extends StatefulWidget {
 class _ContactsListPageState extends State<ContactsListPage> {
   List<Contact> _contacts = [];
   ScrollController _scrollController = ScrollController();
+  SlidableController _slidableController;
 
   @override
   void initState() {
     super.initState();
     _loadContacts();
+    _slidableController = SlidableController();
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {
@@ -65,16 +68,29 @@ class _ContactsListPageState extends State<ContactsListPage> {
   Widget _buildContactListTile(BuildContext context, int index) {
     var contact = _contacts[index];
 
-    return ListTile(
-      onTap: () => _navigateToContactDetails(contact, index),
-      leading: Hero(
-        tag: index,
-        child: CircleAvatar(
-          backgroundImage: NetworkImage(contact.avatar),
+    return Slidable(
+      actionPane: SlidableDrawerActionPane(),
+      controller: _slidableController,
+      actionExtentRatio: 0.25,
+      secondaryActions: <Widget>[
+        IconSlideAction(
+          caption: 'Delete',
+          color: Colors.red,
+          icon: Icons.delete,
+          onTap: () {},
         ),
+      ],
+      child: ListTile(
+        onTap: () => _navigateToContactDetails(contact, index),
+        leading: Hero(
+          tag: index,
+          child: CircleAvatar(
+            backgroundImage: NetworkImage(contact.avatar),
+          ),
+        ),
+        title: Text(contact.name),
+        subtitle: Text(contact.email),
       ),
-      title: Text(contact.name),
-      subtitle: Text(contact.email),
     );
   }
 

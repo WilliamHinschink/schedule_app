@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scheduleapp/ui/contacts/contacts_list_page.dart';
+import 'package:scheduleapp/ui/home/home_page.dart';
 
 class BudgetScheduleApp extends StatelessWidget {
   @override
@@ -10,7 +11,7 @@ class BudgetScheduleApp extends StatelessWidget {
         accentColor: Color(0xFFF850DD)
       ),
       title: 'BudgetDash',
-      home: ContactsListPage(),
+      home: HomePage(),
     );
   }
 }
